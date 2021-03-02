@@ -4,10 +4,14 @@ class Item
   def initialize(name)
     @name = name
     @bids = {}
+    @can_add_bid = true
   end
 
   def add_bid(attendee, bid)
-    @bids[attendee] = bid
+    if @can_add_bid == true
+      @bids[attendee] = bid
+    else
+    end
   end
 
   def current_high_bid
@@ -19,5 +23,8 @@ class Item
     else
       0
     end
+  end
+  def close_bidding
+    @can_add_bid = false
   end
 end
